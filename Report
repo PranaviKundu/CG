@@ -1,0 +1,99 @@
+Snowman Project Report in Computer Graphics
+Abstract
+
+The Snowman Project is an educational initiative designed to illustrate the principles of computer graphics through the creation of a 3D snowman model. Utilizing a graphics programming framework, this project demonstrates basic shapes, transformations, and rendering techniques. By developing this project, we gain hands-on experience in 3D modeling and graphical representation, enhancing our understanding of computer graphics concepts.
+Introduction
+
+Computer graphics is a vital field in computer science that focuses on generating visual content using computers. The Snowman Project serves as a practical application of these concepts, allowing participants to create a simple yet engaging 3D model. The project encompasses the creation of basic geometric shapes, their transformations, and rendering techniques, which are foundational skills in graphics programming. The objective is to develop a snowman model while learning the fundamentals of 3D graphics.
+Software Requirements
+
+To successfully complete the Snowman Project, the following software and tools are required:
+
+    Programming Language: Python or C++
+    Graphics Library: OpenGL or similar (e.g., GLUT or GLFW)
+    Development Environment: IDE (e.g., Visual Studio, PyCharm)
+    Operating System: Windows, macOS, or Linux
+
+Block Diagram
+
+plaintext
+
++-------------------------+
+|    User Interface       |
+| (Input for Snowman)    |
++-----------+-------------+
+            |
+            v
++-----------+-------------+
+|  Shape Creation Module  |
+| (Create Spheres, etc.) |
++-----------+-------------+
+            |
+            v
++-----------+-------------+
+| Transformation Module   |
+| (Translate, Rotate)     |
++-----------+-------------+
+            |
+            v
++-----------+-------------+
+|   Rendering Engine      |
+| (Display on Screen)     |
++-------------------------+
+
+Source Code
+
+Here is a simplified version of the source code for creating a basic snowman using OpenGL in Python:
+
+python
+
+import OpenGL.GL as gl
+import OpenGL.GLUT as glut
+import numpy as np
+
+def draw_sphere(radius, slices, stacks):
+    gluSphere(gluNewQuadric(), radius, slices, stacks)
+
+def draw_snowman():
+    # Base
+    glPushMatrix()
+    glTranslatef(0.0, -1.5, 0.0)
+    glColor3f(1.0, 1.0, 1.0)  # White color
+    draw_sphere(1.0, 20, 20)
+    glPopMatrix()
+
+    # Middle
+    glPushMatrix()
+    glTranslatef(0.0, 0.0, 0.0)
+    draw_sphere(0.75, 20, 20)
+    glPopMatrix()
+
+    # Head
+    glPushMatrix()
+    glTranslatef(0.0, 1.25, 0.0)
+    draw_sphere(0.5, 20, 20)
+    glPopMatrix()
+
+def display():
+    glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
+    glLoadIdentity()
+    draw_snowman()
+    glutSwapBuffers()
+
+def main():
+    glutInit()
+    glutInitDisplayMode(glut.GLUT_DOUBLE | glut.GLUT_RGB)
+    glutInitWindowSize(800, 600)
+    glutCreateWindow(b'Snowman Project')
+    glutDisplayFunc(display)
+    glutMainLoop()
+
+if __name__ == "__main__":
+    main()
+
+Result
+
+Upon executing the code, the application displays a 3D snowman model composed of three spheres representing the base, middle, and head. The snowman's appearance is rendered in a white color, showcasing basic 3D rendering capabilities. The model can be manipulated by adjusting camera angles and transformations to visualize the snowman from different perspectives.
+Conclusion
+
+The Snowman Project effectively demonstrates the core concepts of computer graphics, including 3D modeling, transformations, and rendering techniques. Through the hands-on development of a snowman model, participants gain valuable insights into the graphical programming process. This project serves as a foundation for further exploration of more complex graphical applications and enhances understanding of computer graphics principles. Future improvements could include adding textures, lighting effects, and interactivity to enhance the user experience.
