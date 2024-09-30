@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1677764369 source:/home/slp/OpenGL Projects/Snowman/snowman.cpp
+	<GL/glut.h>
+	<math.h>
+	<stdlib.h>
+
